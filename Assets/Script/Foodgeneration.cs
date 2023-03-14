@@ -7,12 +7,12 @@ using UnityEngine;
 public class Foodgeneration : MonoBehaviour
 {
 	// Start is called before the first frame update
-	public static TextMeshProUGUI dishnumber1;
+	public TextMeshProUGUI dishnumber1;
 	public TextMeshProUGUI dishnumber2;
 	public TextMeshProUGUI dishnumber3;
 	public TextMeshProUGUI dishnumber4;
 	public TextMeshProUGUI rounddown;
-	
+	public static string finaldish = "";
 
 	int Maindish;
 	int combodish;
@@ -61,7 +61,7 @@ public class Foodgeneration : MonoBehaviour
 			switch (ChooseArray) {
 				case 1:
 					dishnumber1.text = FoodStack.grilledFood [Maindish] + "";
-
+					finaldish = FoodStack.grilledFood [Maindish];
 					if (Maindish == 0) {
 						dishnumber2.text = FoodStack.foodName [0];
 						dishnumber3.text = "";
@@ -76,7 +76,7 @@ public class Foodgeneration : MonoBehaviour
 
 				case 2:
 					dishnumber1.text = FoodStack.panFood [Maindish] + "";
-
+					finaldish = FoodStack.panFood [Maindish];
 					if (Maindish == 0) {
 						dishnumber2.text = FoodStack.foodName [2];
 						dishnumber3.text = "";
@@ -91,6 +91,7 @@ public class Foodgeneration : MonoBehaviour
 
 				case 3:
 					dishnumber1.text = FoodStack.cutFood [Maindish] + "";
+					finaldish = FoodStack.cutFood [Maindish];
 					if (Maindish == 0) {
 						dishnumber2.text = FoodStack.foodName [4];
 						dishnumber3.text = "";
@@ -105,7 +106,7 @@ public class Foodgeneration : MonoBehaviour
 
 				case 4:
 					dishnumber1.text = FoodStack.combo [combodish] + "";
-
+					finaldish = FoodStack.combo [Maindish];
 					if (combodish == 0) {
 						dishnumber2.text = FoodStack.grilledFood [0];
 						dishnumber3.text = FoodStack.grilledFood [1];
@@ -126,11 +127,11 @@ public class Foodgeneration : MonoBehaviour
 
 			}
 
-				
-
-		
 
 
+
+
+			Debug.Log(finaldish+"sasss");
 			counter = 20;
 		}
 		rounddown.text = counter + "";
