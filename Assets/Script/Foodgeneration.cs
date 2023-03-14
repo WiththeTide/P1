@@ -30,7 +30,10 @@ public class Foodgeneration : MonoBehaviour
     void Update()
     {
 		movestepdown();
-		
+		if (GameStage.g) {
+			rerollpressed();
+			GameStage.g=false;
+		}
 		}
 	public void rerollpressed() {
 		counter = 0;
