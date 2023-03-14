@@ -41,7 +41,7 @@ namespace player
             if (Input.GetKeyDown(KeyCode.W))
             {
                 Debug.Log(turns);
-                targetPos = new Vector3(transform.position.x, transform.position.y + 2, -2);
+                targetPos = new Vector3(transform.position.x, transform.position.y + 2.2f, -2);
                 if (targetPos.y < 3)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
@@ -52,7 +52,7 @@ namespace player
             if (Input.GetKeyDown(KeyCode.A))
             {
                 Debug.Log(turns);
-                targetPos = new Vector3(transform.position.x - 3, transform.position.y, -2);
+                targetPos = new Vector3(transform.position.x - 2.4f, transform.position.y, -2);
                 if (targetPos.x > -4)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
@@ -63,7 +63,7 @@ namespace player
             if (Input.GetKeyDown(KeyCode.S))
             {
                 Debug.Log(turns);
-                targetPos = new Vector3(transform.position.x, transform.position.y - 2, -2);
+                targetPos = new Vector3(transform.position.x, transform.position.y - 2.2f, -2);
                 if (targetPos.y > -3)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
@@ -74,7 +74,7 @@ namespace player
             if (Input.GetKeyDown(KeyCode.D))
             {
                 Debug.Log(turns);
-                targetPos = new Vector3(transform.position.x + 3, transform.position.y, -2);
+                targetPos = new Vector3(transform.position.x + 2.4f, transform.position.y, -2);
                 if (targetPos.x < 4)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
