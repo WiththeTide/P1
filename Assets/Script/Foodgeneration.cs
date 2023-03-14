@@ -7,7 +7,7 @@ using UnityEngine;
 public class Foodgeneration : MonoBehaviour
 {
 	// Start is called before the first frame update
-	public TextMeshProUGUI dishnumber1;
+	public static TextMeshProUGUI dishnumber1;
 	public TextMeshProUGUI dishnumber2;
 	public TextMeshProUGUI dishnumber3;
 	public TextMeshProUGUI dishnumber4;
