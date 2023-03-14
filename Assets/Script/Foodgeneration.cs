@@ -58,7 +58,7 @@ public class Foodgeneration : MonoBehaviour
 		if (counter <= 0) {
 			Maindish = Random.Range(0,2);
 			combodish= Random.Range(0,3);
-			int ChooseArray = Random.Range(1,5);
+			int ChooseArray = Random.Range(1,4);
 		
 			Debug.Log(ChooseArray + "ssss1");
 
