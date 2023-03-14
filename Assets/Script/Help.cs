@@ -6,11 +6,13 @@ public class Help : MonoBehaviour
 {
     public GameObject help1;
     public GameObject help2;
+    public GameObject help3;
     // Start is called before the first frame update
     void Start()
     {
         help1.SetActive(false);
         help2.SetActive(false);
+        help3.SetActive(false);
     }
 
     // Update is called once per frame
@@ -21,11 +23,13 @@ public class Help : MonoBehaviour
             //print("h key was pressed");
             help1.SetActive(true);
             help2.SetActive(true);
+            help3.SetActive(true);
         }
         else if(Input.GetKeyUp("h"))
         {
             help1.SetActive(false);
             help2.SetActive(false);
+            help3.SetActive(false);
         }
     }
 }
