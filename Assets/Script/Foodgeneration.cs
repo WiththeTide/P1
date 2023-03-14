@@ -30,10 +30,11 @@ public class Foodgeneration : MonoBehaviour
     void Update()
     {
 		movestepdown();
-
-		}
-	void rerollpressed() {
 		
+		}
+	public void rerollpressed() {
+		counter = 0;
+		buttondown();
 	}
 
 	public void movestepdown() {
