@@ -71,6 +71,10 @@ namespace FoodSystem
                 {
                     _spriteRenderer.sprite = _stack.foodStack[4];
                 }
+                else if (PlayerPocket.Equals(FoodStack.foodName[5]))
+                {
+                    _spriteRenderer.sprite = _stack.foodStack[5];
+                }
                 else if (PlayerPocket.Equals(FoodStack.grilledFood[0]))
                 {
                     _spriteRenderer.sprite = _stack.grilledFoodStack[0];
