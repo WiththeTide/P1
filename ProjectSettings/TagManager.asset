@@ -52,3 +52,6 @@ TagManager:
   - name: Food
     uniqueID: 2777542031
     locked: 0
+  - name: help
+    uniqueID: 2445682267
+    locked: 0
