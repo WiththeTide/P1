@@ -12,12 +12,12 @@ public class Foodgeneration : MonoBehaviour
 	public TextMeshProUGUI dishnumber3;
 	public TextMeshProUGUI dishnumber4;
 	public TextMeshProUGUI rounddown;
-	bool reroll = false;
+	
 
 	int Maindish;
 	int combodish;
 
-	int counter=5;
+	int counter=20;
 	
 
 
@@ -33,7 +33,7 @@ public class Foodgeneration : MonoBehaviour
 
 		}
 	void rerollpressed() {
-		reroll = true;
+		
 	}
 
 	public void movestepdown() {
@@ -46,11 +46,11 @@ public class Foodgeneration : MonoBehaviour
 
 	public void buttondown() {
 
-		if (counter <= 0||reroll==true) {
+		if (counter <= 0) {
 			Maindish = Random.Range(0,2);
 			combodish= Random.Range(0,3);
 			int ChooseArray = Random.Range(1,5);
-			reroll = false;
+		
 			Debug.Log(ChooseArray + "ssss1");
 
 
@@ -127,7 +127,7 @@ public class Foodgeneration : MonoBehaviour
 		
 
 
-			counter = 5;
+			counter = 20;
 		}
 		rounddown.text = counter + "";
 
