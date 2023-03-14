@@ -11,6 +11,7 @@ public class Table : MonoBehaviour
     public bool playerOn;
     public Stack<string> tableCapacity = new Stack<string>();
     public TMP_Text info;
+    public TMP_Text infoF;
     public TMP_Text currentFood;
     private void Start()
     {
@@ -27,6 +28,7 @@ public class Table : MonoBehaviour
     {
         //Debug.Log("enterTable");
         playerOn = true;
+        infoF.text = "Table: ";
         FoodStack.allControl = true;
         if (tableCapacity.Count >= 1)
         {
@@ -40,6 +42,7 @@ public class Table : MonoBehaviour
     {
         //Debug.Log("ExitTable");
         playerOn = false;
+        infoF.text = string.Empty;
         FoodStack.allControl = false;
         if (!FoodStack.allControl)
         {

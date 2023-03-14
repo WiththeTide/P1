@@ -6,14 +6,14 @@ using UnityEngine;
 public class Drag2D : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int stage = 0;
     private Vector3 startPos;
     //public Transform[] tempPosArr = new Transform[9];
-    public Transform[] dragPos = new Transform[9];
+    public Transform[] dragPos = new Transform[8];
     public Transform[] dragPosSave = new Transform[6];
     public bool test = true;
     private void Start()
     {
+        GameStage.drag = true;
         startPos = transform.position;
     }
     private void Update()
@@ -23,12 +23,12 @@ public class Drag2D : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (stage == 0)
+        if (GameStage.drag)
         {
             transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, -2);
 
         }
-        else if (stage == 1)
+        else if (!GameStage.drag)
         {
             return;
         }
@@ -81,12 +81,6 @@ public class Drag2D : MonoBehaviour
         {
             //Debug.Log("enter");
             transform.position = dragPos[7].position;
-
-        }
-        else if (Mathf.Abs(transform.position.x - dragPos[8].position.x) + Mathf.Abs(transform.position.y - dragPos[8].position.y) <= 1)
-        {
-            //Debug.Log("enter");
-            transform.position = dragPos[8].position;
 
         }
         else

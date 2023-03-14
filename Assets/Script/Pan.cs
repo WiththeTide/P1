@@ -14,6 +14,7 @@ public class Pan : MonoBehaviour
     private int[] cookTime = new int[1];
     private bool finishPan;
     public TMP_Text info;
+    public TMP_Text infoF;
     public TMP_Text currentFood;
     void Start()
     {
@@ -29,6 +30,7 @@ public class Pan : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerOn = true;
+        infoF.text = "Pan: ";
         FoodStack.allControl = true;
         if (FoodStack.allControl)
         {
@@ -39,6 +41,7 @@ public class Pan : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerOn = false;
+        infoF.text = string.Empty;
         FoodStack.allControl = false;
         if (!FoodStack.allControl)
         {
@@ -68,23 +71,23 @@ public class Pan : MonoBehaviour
                 finishPan = false;
             }
 
-            if (Player.pocket.Equals(FoodStack.foodName[0]))
+            if (Player.pocket.Equals(FoodStack.foodName[2]))
             {
                 workTime = 5;
                 CookatTurn = Player.turns + workTime;
                 cookTime[0] = CookatTurn;
                 Debug.Log(CookatTurn);
-                currentCooking = FoodStack.foodName[0];
+                currentCooking = FoodStack.foodName[2];
                 Player.pocket = " ";
                 Food.emptyPocket();
             }
-            else if (Player.pocket.Equals(FoodStack.foodName[1]))
+            else if (Player.pocket.Equals(FoodStack.foodName[3]))
             {
                 workTime = 10;
                 CookatTurn = Player.turns + workTime;
                 cookTime[0] = CookatTurn;
                 Debug.Log(CookatTurn);
-                currentCooking = FoodStack.foodName[1];
+                currentCooking = FoodStack.foodName[3];
                 Player.pocket = " ";
                 Food.emptyPocket();
             }
@@ -97,17 +100,17 @@ public class Pan : MonoBehaviour
         }
         bool check = Player.turns.Equals(cookTime[0]);
         //Debug.Log(check);
-        if (currentCooking.Equals(FoodStack.foodName[0]) && check)
+        if (currentCooking.Equals(FoodStack.foodName[2]) && check)
         {
             Debug.Log(check);
-            currentCooking = FoodStack.grilledFood[0];
+            currentCooking = FoodStack.panFood[0];
             finishPan = true;
             cookTime[0] = 0;
             Debug.Log(currentCooking);
         }
-        else if (currentCooking.Equals(FoodStack.foodName[1]) && check)
+        else if (currentCooking.Equals(FoodStack.foodName[3]) && check)
         {
-            currentCooking = FoodStack.grilledFood[1];
+            currentCooking = FoodStack.panFood[1];
             finishPan = true;
             cookTime[0] = 0;
             Debug.Log(currentCooking);

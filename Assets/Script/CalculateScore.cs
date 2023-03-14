@@ -10,6 +10,7 @@ public class CalculateScore : MonoBehaviour
     public TMP_Text score;
     public int scoreNum;
     private bool playerOn;
+    public static bool complateCook = false;
     // Start is called before the first frame update
     private void Start()
     {
@@ -35,10 +36,12 @@ public class CalculateScore : MonoBehaviour
     {
         if (playerOn && Input.GetKeyDown(KeyCode.Space))
         {
-            if (Player.pocket.Equals(Foodgeneration.dishnumber1.text))
+            if (Player.pocket.Equals(Foodgeneration.finaldish))
             {
                 scoreNum += 5;
-                score.text = scoreNum.ToString();
+                score.text = "Score: " + scoreNum.ToString();
+                complateCook = true;
+                Food.emptyPocket();
             }
         }
     }

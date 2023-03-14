@@ -34,7 +34,12 @@ public class Foodgeneration : MonoBehaviour
 			rerollpressed();
 			GameStage.g=false;
 		}
-		}
+		if (CalculateScore.complateCook)
+		{
+            rerollpressed();
+			CalculateScore.complateCook = false;
+        }
+	}
 	public void rerollpressed() {
 		counter = 0;
 		buttondown();

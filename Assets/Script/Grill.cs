@@ -14,6 +14,7 @@ public class Grill : MonoBehaviour
     private int[] cookTime = new int[1];
     private bool finishGrill;
     public TMP_Text info;
+    public TMP_Text infoF;
     public TMP_Text currentFood;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Grill : MonoBehaviour
     {
         playerOn = true;
         //Debug.Log("EnterTheGrill");
+        infoF.text = "Grill: ";
         FoodStack.allControl = true;
         if (FoodStack.allControl)
         {
@@ -43,6 +45,7 @@ public class Grill : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerOn = false;
+        infoF.text = string.Empty;
         FoodStack.allControl = false;
         if (!FoodStack.allControl)
         {
