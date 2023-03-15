@@ -12,8 +12,9 @@ public class GameStage : MonoBehaviour
     public GameObject Turns;
     public GameObject Image;
     public GameObject Score;
+    public GameObject WinCondition;
 
-	GameStage t;
+    GameStage t;
     void Start()
     {
         player = GameObject.Find("Player");
@@ -21,6 +22,7 @@ public class GameStage : MonoBehaviour
         Image.SetActive(false);
         Turns.SetActive(false);
 	    Score.SetActive(false);
+        WinCondition.SetActive(false);
     }
 
    
@@ -43,5 +45,12 @@ public class GameStage : MonoBehaviour
         {
 
         }
+
+        if (CalculateScore.scoreNum >= 50)
+        {
+            WinCondition.SetActive(true);
+            CalculateScore.scoreNum = 0;
+        }
+
     }
 }

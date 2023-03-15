@@ -8,17 +8,20 @@ using TMPro;
 public class CalculateScore : MonoBehaviour
 {
     public TMP_Text score;
-    public int scoreNum;
+    public static int scoreNum;
     private bool playerOn;
     public static bool complateCook = false;
+    
     // Start is called before the first frame update
-    private void Start()
+    void Awake()
     {
         scoreNum = 0;
+   
     }
     private void Update()
     {
         calculate();
+        ExitGame();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,4 +48,12 @@ public class CalculateScore : MonoBehaviour
             }
         }
     }
+    private void ExitGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
 }
