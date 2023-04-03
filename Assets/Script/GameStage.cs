@@ -28,7 +28,7 @@ public class GameStage : MonoBehaviour
    
     void Update()
     {
-        if(stage == 1 && Input.GetKeyDown(KeyCode.Space))
+        if(stage == 1 && Input.GetKeyDown(KeyCode.Space) && Drag2D.holdAllCheck == true)
         {
 
             Image.SetActive(true);
