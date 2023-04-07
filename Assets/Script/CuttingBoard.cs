@@ -10,7 +10,7 @@ public class CuttingBoard : MonoBehaviour
     public bool playerOn = false;
     private int workTime;
     private int CookatTurn;
-    private static string currentCooking = " ";
+    public static string currentCooking = " ";
     private int[] cookTime = new int[1];
     private bool finishCut;
     public TMP_Text info;
@@ -72,7 +72,7 @@ public class CuttingBoard : MonoBehaviour
 
             if (Player.pocket.Equals(FoodStack.foodName[4]))
             {
-                workTime = 5;
+                workTime = 1;
                 CookatTurn = Player.turns + workTime;
                 cookTime[0] = CookatTurn;
                 Debug.Log(CookatTurn);
@@ -82,7 +82,7 @@ public class CuttingBoard : MonoBehaviour
             }
             else if (Player.pocket.Equals(FoodStack.foodName[5]))
             {
-                workTime = 5;
+                workTime = 2;
                 CookatTurn = Player.turns + workTime;
                 cookTime[0] = CookatTurn;
                 Debug.Log(CookatTurn);

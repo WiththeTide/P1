@@ -8,7 +8,7 @@ using TMPro;
 public class Grill : MonoBehaviour
 {
     public bool playerOn = false;
-    private static string currentCooking = " ";
+    public static string currentCooking = " ";
     private int workTime;
     private int CookatTurn;
     private int[] cookTime = new int[1];
@@ -77,7 +77,7 @@ public class Grill : MonoBehaviour
 
             if (Player.pocket.Equals(FoodStack.foodName[0]))
             {
-                workTime = 5;
+                workTime = 2;
                 CookatTurn = Player.turns + workTime;
                 cookTime[0] = CookatTurn;
                 Debug.Log(CookatTurn);
@@ -87,7 +87,7 @@ public class Grill : MonoBehaviour
             }
             else if (Player.pocket.Equals(FoodStack.foodName[1]))
             {
-                workTime = 10;
+                workTime = 3;
                 CookatTurn = Player.turns + workTime;
                 cookTime[0] = CookatTurn;
                 Debug.Log(CookatTurn);

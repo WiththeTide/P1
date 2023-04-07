@@ -70,8 +70,6 @@ public class Fridge : MonoBehaviour
                 }
                 Player.pocket = FoodStack.foodName[i];
             }
-            Debug.Log(i);
-            Debug.Log(Player.pocket);
         }
     }
 }

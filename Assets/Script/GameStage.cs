@@ -11,6 +11,7 @@ public class GameStage : MonoBehaviour
     public GameObject player;
     public GameObject Turns;
     public GameObject Image;
+    public GameObject Image2;
     public GameObject Score;
     public GameObject WinCondition;
 
@@ -20,6 +21,7 @@ public class GameStage : MonoBehaviour
         player = GameObject.Find("Player");
         player.SetActive(false);
         Image.SetActive(false);
+        Image2.SetActive(false);
         Turns.SetActive(false);
 	    Score.SetActive(false);
         WinCondition.SetActive(false);
@@ -32,6 +34,7 @@ public class GameStage : MonoBehaviour
         {
 
             Image.SetActive(true);
+            Image2.SetActive(true);
             Turns.SetActive(true);
             Score.SetActive(true);
             Debug.Log("playerSpawn");

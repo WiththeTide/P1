@@ -39,7 +39,7 @@ public class CalculateScore : MonoBehaviour
     {
         if (playerOn && Input.GetKeyDown(KeyCode.Space))
         {
-            if (Player.pocket.Equals(Foodgeneration.finaldish))
+            if (Player.pocket.Equals(Foodgeneration.finaldish) || Player.pocket.Equals(Foodgeneration.finaldish2))
             {
                 scoreNum += 5;
                 score.text = "Score: " + scoreNum.ToString();

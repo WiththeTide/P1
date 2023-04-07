@@ -22,65 +22,7 @@ public class Drag2D : MonoBehaviour
     private void Update()
     {
         // Debug.Log(Input.mousePosition.x + ", " + Input.mousePosition.y + "," + Input.mousePosition.z);
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-           
-           for (int i = 0; i < dragPos.Length; i++)
-           {
-                if (dragPosSave[0].position.Equals(dragPos[i].position))
-                {
-                    if (!dragList.ContainsKey(0))
-                    {
-                        dragList.Add(0, dragPosSave[0]);
-                    }
-                }
-                else if (dragPosSave[1].position.Equals(dragPos[i].position))
-                {
-                    if (!dragList.ContainsKey(1))
-                    {
-                        dragList.Add(1, dragPosSave[1]);
-                    }
-                }
-                else if (dragPosSave[2].position.Equals(dragPos[i].position))
-                {
-                    if (!dragList.ContainsKey(2))
-                    {
-                        dragList.Add(2, dragPosSave[2]);
-                    }
-                }
-                else if (dragPosSave[3].position.Equals(dragPos[i].position))
-                {
-                    if (!dragList.ContainsKey(3))
-                    {
-                        dragList.Add(3, dragPosSave[3]);
-                    }
-                }
-                else if (dragPosSave[4].position.Equals(dragPos[i].position))
-                {
-                    if (!dragList.ContainsKey(4))
-                    {
-                        dragList.Add(4, dragPosSave[4]);
-                    }
-                }
-                else if (dragPosSave[5].position.Equals(dragPos[i].position))
-                {
-                    if (!dragList.ContainsKey(5))
-                    {
-                        dragList.Add(5, dragPosSave[5]);
-                    }
-                }
-            }
-
-            if (dragList.Count >= 6)
-            {
-                Drag2D.holdAllCheck = true;
-            }
-            else if (dragList.Count < 6)
-            {
-                Debug.Log("you have not put all facilities");
-            }
-      
-        }
+        checkPosition();
     }
 
     private void OnMouseDrag()
@@ -166,6 +108,64 @@ public class Drag2D : MonoBehaviour
           }*/
         posCompare();
 
+    }
+
+    void checkPosition()
+    {
+        for (int i = 0; i < dragPos.Length; i++)
+        {
+            if (dragPosSave[0].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(0))
+                {
+                    dragList.Add(0, dragPosSave[0]);
+                }
+            }
+            else if (dragPosSave[1].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(1))
+                {
+                    dragList.Add(1, dragPosSave[1]);
+                }
+            }
+            else if (dragPosSave[2].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(2))
+                {
+                    dragList.Add(2, dragPosSave[2]);
+                }
+            }
+            else if (dragPosSave[3].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(3))
+                {
+                    dragList.Add(3, dragPosSave[3]);
+                }
+            }
+            else if (dragPosSave[4].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(4))
+                {
+                    dragList.Add(4, dragPosSave[4]);
+                }
+            }
+            else if (dragPosSave[5].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(5))
+                {
+                    dragList.Add(5, dragPosSave[5]);
+                }
+            }
+        }
+
+        if (dragList.Count >= 6)
+        {
+            Drag2D.holdAllCheck = true;
+        }
+        else if (dragList.Count < 6)
+        {
+
+        }
     }
 
     void posCompare() 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 //using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using player;
+using tableScript;
 
 namespace FoodSystem
 {
