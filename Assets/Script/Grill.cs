@@ -15,6 +15,7 @@ public class Grill : MonoBehaviour
     private bool finishGrill;
     public TMP_Text info;
     public TMP_Text currentFood;
+    public AudioSource finish;
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +112,7 @@ public class Grill : MonoBehaviour
             currentCooking = FoodStack.grilledFood[0];
             finishGrill = true;
             cookTime[0] = 0;
+            finish.Play();
             Debug.Log(currentCooking);
         }
         else if (currentCooking.Equals(FoodStack.foodName[1]) && check)
@@ -118,6 +120,7 @@ public class Grill : MonoBehaviour
             currentCooking = FoodStack.grilledFood[1];
             finishGrill = true;
             cookTime[0] = 0;
+            finish.Play();
             Debug.Log(currentCooking);
         }
     }

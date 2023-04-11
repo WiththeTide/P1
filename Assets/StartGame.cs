@@ -7,11 +7,12 @@ public class StartGame : MonoBehaviour
     public float delay = 0.1f;
     float timer;
     public GameObject text;
+    public AudioSource start;
     bool on = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        start.Play();
     }
 
     // Update is called once per frame
@@ -34,6 +35,7 @@ public class StartGame : MonoBehaviour
             }
         if (Input.GetKeyDown("space"))
         {
+            start.Stop();
             SceneManager.LoadScene("GameScene");
         }
     }

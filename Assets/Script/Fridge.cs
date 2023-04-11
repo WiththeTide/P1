@@ -14,6 +14,7 @@ public class Fridge : MonoBehaviour
     public int i;
     public bool playerOn;
     public TMP_Text info;
+    public AudioSource click;
 
     void Start()
     {
@@ -67,6 +68,7 @@ public class Fridge : MonoBehaviour
                 }
                 Player.pocket = FoodStack.foodName[i];
             }
+            click.Play();
         }
     }
 }

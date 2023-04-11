@@ -9,7 +9,8 @@ public class GameStage : MonoBehaviour
 	public static bool g = false;	
     public static bool drag = true;
     public TMP_Text consumeTurns;
-
+    public AudioSource bgm;
+    public AudioSource win;
     public int stage = 1;
     public GameObject player;
     public GameObject Turns;
@@ -28,6 +29,8 @@ public class GameStage : MonoBehaviour
         Turns.SetActive(false);
 	    Score.SetActive(false);
         WinCondition.SetActive(false);
+        bgm.Play();
+        
     }
 
    
@@ -43,7 +46,7 @@ public class GameStage : MonoBehaviour
             Debug.Log("playerSpawn");
             player.SetActive(true);
             stage = 2;
-			g= true;
+			g = true;
             drag = false;
 
 		}
@@ -55,6 +58,7 @@ public class GameStage : MonoBehaviour
         if (CalculateScore.scoreNum >= 50)
         {
             consumeTurns.text = "Total Consumed Turns: " + Player.turns;
+            win.Play();
             WinCondition.SetActive(true);
             CalculateScore.scoreNum = 0;
         }

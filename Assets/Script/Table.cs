@@ -14,6 +14,7 @@ namespace tableScript
         public static Stack<string> tableCapacity = new Stack<string>();
         public TMP_Text info;
         public TMP_Text currentFood;
+        public AudioSource table;
         private void Start()
         {
             playerOn = false;
@@ -61,6 +62,7 @@ namespace tableScript
         {
             if (playerOn == true && Input.GetKeyDown(KeyCode.Space))
             {
+                table.Play();
                 if (!Player.pocket.Equals(" "))
                 {
                     if (tableCapacity.Count < 2)

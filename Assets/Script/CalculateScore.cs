@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class CalculateScore : MonoBehaviour
 {
     public TMP_Text score;
+    public AudioSource servedFood;
     public static int scoreNum;
     private bool playerOn;
     public static bool complateCook = false;
@@ -43,6 +44,7 @@ public class CalculateScore : MonoBehaviour
             if (Player.pocket.Equals(Foodgeneration.finaldish2))
             {
                 scoreNum += 5;
+                servedFood.Play();
                 Foodgeneration.counter2 = 0;
                 score.text = "Score: " + scoreNum.ToString();
                 complateCook = true;
@@ -51,6 +53,7 @@ public class CalculateScore : MonoBehaviour
             else if (Player.pocket.Equals(Foodgeneration.finaldish))
             {
                 scoreNum += 5;
+                servedFood.Play();
                 Foodgeneration.counter1 = 0;
                 score.text = "Score: " + scoreNum.ToString();
                 complateCook = true;

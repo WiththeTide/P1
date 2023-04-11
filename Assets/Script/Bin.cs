@@ -9,7 +9,7 @@ public class Bin : MonoBehaviour
 {
     private bool playerOn;
     public TMP_Text info;
-    
+    public AudioSource bin;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +45,7 @@ public class Bin : MonoBehaviour
     {
         if (playerOn == true && Input.GetKeyDown(KeyCode.Space))
         {
+            bin.Play();
             Food.emptyPocket();
         }
     }

@@ -15,6 +15,7 @@ public class Pan : MonoBehaviour
     private bool finishPan;
     public TMP_Text info;
     public TMP_Text currentFood;
+    public AudioSource finish;
     void Start()
     {
 
@@ -103,6 +104,7 @@ public class Pan : MonoBehaviour
             currentCooking = FoodStack.panFood[0];
             finishPan = true;
             cookTime[0] = 0;
+            finish.Play();
             Debug.Log(currentCooking);
         }
         else if (currentCooking.Equals(FoodStack.foodName[3]) && check)
@@ -110,6 +112,7 @@ public class Pan : MonoBehaviour
             currentCooking = FoodStack.panFood[1];
             finishPan = true;
             cookTime[0] = 0;
+            finish.Play();
             Debug.Log(currentCooking);
         }
     }

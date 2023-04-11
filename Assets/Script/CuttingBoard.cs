@@ -15,6 +15,7 @@ public class CuttingBoard : MonoBehaviour
     private bool finishCut;
     public TMP_Text info;
     public TMP_Text currentFood;
+    public AudioSource finish;
     // Start is called before the first frame update
     void Start()
     {
@@ -101,6 +102,7 @@ public class CuttingBoard : MonoBehaviour
             currentCooking = FoodStack.cutFood[0];
             finishCut = true;
             cookTime[0] = 0;
+            finish.Play();
             Debug.Log(currentCooking);
         }
         else if (currentCooking.Equals(FoodStack.foodName[5]) && check)
@@ -108,6 +110,7 @@ public class CuttingBoard : MonoBehaviour
             currentCooking = FoodStack.cutFood[1];
             finishCut = true;
             cookTime[0] = 0;
+            finish.Play();
             Debug.Log(currentCooking);
         }
     }
