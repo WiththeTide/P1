@@ -14,7 +14,6 @@ public class Pan : MonoBehaviour
     private int[] cookTime = new int[1];
     private bool finishPan;
     public TMP_Text info;
-    public TMP_Text infoF;
     public TMP_Text currentFood;
     void Start()
     {
@@ -30,7 +29,6 @@ public class Pan : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerOn = true;
-        infoF.text = "Pan: ";
         FoodStack.allControl = true;
         if (FoodStack.allControl)
         {
@@ -41,7 +39,6 @@ public class Pan : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerOn = false;
-        infoF.text = string.Empty;
         FoodStack.allControl = false;
         if (!FoodStack.allControl)
         {
@@ -50,7 +47,7 @@ public class Pan : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        info.text = "This is Pan";
+        info.text = "The Golden Planet";
     }
 
     private void OnMouseExit()
@@ -71,7 +68,7 @@ public class Pan : MonoBehaviour
                 finishPan = false;
             }
 
-            if (Player.pocket.Equals(FoodStack.foodName[2]))
+            if (Player.pocket.Equals(FoodStack.foodName[2]) && finishPan == false)
             {
                 workTime = 1;
                 CookatTurn = Player.turns + workTime;
@@ -81,7 +78,7 @@ public class Pan : MonoBehaviour
                 Player.pocket = " ";
                 Food.emptyPocket();
             }
-            else if (Player.pocket.Equals(FoodStack.foodName[3]))
+            else if (Player.pocket.Equals(FoodStack.foodName[3]) && finishPan == false)
             {
                 workTime = 3;
                 CookatTurn = Player.turns + workTime;

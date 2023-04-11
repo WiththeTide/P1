@@ -9,7 +9,7 @@ namespace FoodSystem
     {
         public static string[] foodName = { "Potato Maggot", "Steak Bug", "Ball Monster", "Bird", "Cucumber Treeman", "Lettuce Hedgehog" };
         public static string[] grilledFood = { "Grilled Potato", "Grilled Steak" };
-        public static string[] panFood = { "Fried Egg", "Cooked Chicken Breast" };
+        public static string[] panFood = { "Fried Egg", "Cooked Chicken" };
         public static string[] cutFood = { "Cucumber Slices", "Salad" };
         public static string[] combo = { "Steak Combo", "Chicken Combo", "Potato Combo" };
         public static bool allControl = false;

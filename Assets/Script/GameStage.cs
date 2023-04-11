@@ -1,11 +1,14 @@
+using player;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameStage : MonoBehaviour
 {
 	public static bool g = false;	
     public static bool drag = true;
+    public TMP_Text consumeTurns;
 
     public int stage = 1;
     public GameObject player;
@@ -51,6 +54,7 @@ public class GameStage : MonoBehaviour
 
         if (CalculateScore.scoreNum >= 50)
         {
+            consumeTurns.text = "Total Consumed Turns: " + Player.turns;
             WinCondition.SetActive(true);
             CalculateScore.scoreNum = 0;
         }

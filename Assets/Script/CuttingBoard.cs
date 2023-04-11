@@ -14,7 +14,6 @@ public class CuttingBoard : MonoBehaviour
     private int[] cookTime = new int[1];
     private bool finishCut;
     public TMP_Text info;
-    public TMP_Text infoF;
     public TMP_Text currentFood;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +29,6 @@ public class CuttingBoard : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerOn = true;
-        infoF.text = "CuttingBoard: ";
         FoodStack.allControl = true;
         if (FoodStack.allControl)
         {
@@ -41,7 +39,6 @@ public class CuttingBoard : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerOn = false;
-        infoF.text = string.Empty;
         FoodStack.allControl = false;
         if (!FoodStack.allControl) 
         {
@@ -50,7 +47,7 @@ public class CuttingBoard : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        info.text = "This is Cutting Board";
+        info.text = "The Green Planet";
     }
 
     private void OnMouseExit()
@@ -70,7 +67,7 @@ public class CuttingBoard : MonoBehaviour
                 finishCut = false;
             }
 
-            if (Player.pocket.Equals(FoodStack.foodName[4]))
+            if (Player.pocket.Equals(FoodStack.foodName[4]) && finishCut == false)
             {
                 workTime = 1;
                 CookatTurn = Player.turns + workTime;
@@ -80,7 +77,7 @@ public class CuttingBoard : MonoBehaviour
                 Player.pocket = " ";
                 Food.emptyPocket();
             }
-            else if (Player.pocket.Equals(FoodStack.foodName[5]))
+            else if (Player.pocket.Equals(FoodStack.foodName[5]) && finishCut == false)
             {
                 workTime = 2;
                 CookatTurn = Player.turns + workTime;

@@ -4,6 +4,7 @@ using UnityEngine;
 using player;
 using FoodSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CalculateScore : MonoBehaviour
 {
@@ -39,13 +40,23 @@ public class CalculateScore : MonoBehaviour
     {
         if (playerOn && Input.GetKeyDown(KeyCode.Space))
         {
-            if (Player.pocket.Equals(Foodgeneration.finaldish) || Player.pocket.Equals(Foodgeneration.finaldish2))
+            if (Player.pocket.Equals(Foodgeneration.finaldish2))
             {
                 scoreNum += 5;
+                Foodgeneration.counter2 = 0;
                 score.text = "Score: " + scoreNum.ToString();
                 complateCook = true;
                 Food.emptyPocket();
             }
+            else if (Player.pocket.Equals(Foodgeneration.finaldish))
+            {
+                scoreNum += 5;
+                Foodgeneration.counter1 = 0;
+                score.text = "Score: " + scoreNum.ToString();
+                complateCook = true;
+                Food.emptyPocket();
+            }
+           
         }
     }
     private void ExitGame()
@@ -56,4 +67,8 @@ public class CalculateScore : MonoBehaviour
         }
     }
 
+    public void restart()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
 }

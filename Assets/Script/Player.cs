@@ -30,7 +30,7 @@ namespace player
         void Update()
         {
             int currentTurnsNum = turns;
-            TurnsCount.text = "Steps: " + currentTurnsNum.ToString();
+            TurnsCount.text = "Total Turns: " + currentTurnsNum.ToString();
             PocketMessage.text = "Pocket: " + Player.pocket;
             move();
 

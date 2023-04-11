@@ -20,8 +20,8 @@ public class Foodgeneration : MonoBehaviour
     int Maindish;
     int Maindish2;
 
-	private static int counter1 = 0;
-	private static int counter2 = 0;
+	public static int counter1 = 0;
+	public static int counter2 = 0;
 
     void Start()
     {
@@ -38,7 +38,9 @@ public class Foodgeneration : MonoBehaviour
 		}
 		if (CalculateScore.complateCook)
 		{
-			CalculateScore.complateCook = false;
+            buttondown();
+            buttondown2();
+            CalculateScore.complateCook = false;
         }
 	}
 

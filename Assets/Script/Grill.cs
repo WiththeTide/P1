@@ -14,7 +14,6 @@ public class Grill : MonoBehaviour
     private int[] cookTime = new int[1];
     private bool finishGrill;
     public TMP_Text info;
-    public TMP_Text infoF;
     public TMP_Text currentFood;
     // Start is called before the first frame update
     void Start()
@@ -33,8 +32,6 @@ public class Grill : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerOn = true;
-        //Debug.Log("EnterTheGrill");
-        infoF.text = "Grill: ";
         FoodStack.allControl = true;
         if (FoodStack.allControl)
         {
@@ -45,7 +42,6 @@ public class Grill : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerOn = false;
-        infoF.text = string.Empty;
         FoodStack.allControl = false;
         if (!FoodStack.allControl)
         {
@@ -54,7 +50,7 @@ public class Grill : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        info.text = "This is Grilled";
+        info.text = "The Pink Planet";
     }
 
     private void OnMouseExit()
@@ -75,7 +71,7 @@ public class Grill : MonoBehaviour
                 finishGrill = false;
             }
 
-            if (Player.pocket.Equals(FoodStack.foodName[0]))
+            if (Player.pocket.Equals(FoodStack.foodName[0]) && finishGrill == false)
             {
                 workTime = 2;
                 CookatTurn = Player.turns + workTime;
@@ -85,7 +81,7 @@ public class Grill : MonoBehaviour
                 Player.pocket = " ";
                 Food.emptyPocket();
             }
-            else if (Player.pocket.Equals(FoodStack.foodName[1]))
+            else if (Player.pocket.Equals(FoodStack.foodName[1]) && finishGrill == false)
             {
                 workTime = 3;
                 CookatTurn = Player.turns + workTime;

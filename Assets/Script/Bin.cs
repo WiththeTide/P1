@@ -9,7 +9,7 @@ public class Bin : MonoBehaviour
 {
     private bool playerOn;
     public TMP_Text info;
-    public TMP_Text infoF;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,18 +25,16 @@ public class Bin : MonoBehaviour
     {
         //Debug.Log("enterTheBin");
         playerOn = true;
-        infoF.text = "Bin: ";
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         //Debug.Log("ExitFridge");
         playerOn = false;
-        infoF.text = string.Empty;
     }
 
     private void OnMouseEnter()
     {
-        info.text = "This is Bin";
+        info.text = "The Red Planet";
     }
 
     private void OnMouseExit()

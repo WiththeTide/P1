@@ -13,7 +13,6 @@ namespace tableScript
         public bool playerOn;
         public static Stack<string> tableCapacity = new Stack<string>();
         public TMP_Text info;
-        public TMP_Text infoF;
         public TMP_Text currentFood;
         private void Start()
         {
@@ -30,7 +29,6 @@ namespace tableScript
         {
             //Debug.Log("enterTable");
             playerOn = true;
-            infoF.text = "Table: ";
             FoodStack.allControl = true;
             if (tableCapacity.Count >= 1)
             {
@@ -44,7 +42,6 @@ namespace tableScript
         {
             //Debug.Log("ExitTable");
             playerOn = false;
-            infoF.text = string.Empty;
             FoodStack.allControl = false;
             if (!FoodStack.allControl)
             {
@@ -53,7 +50,7 @@ namespace tableScript
         }
         private void OnMouseEnter()
         {
-            info.text = "This is Table";
+            info.text = "The Brown Planet";
         }
 
         private void OnMouseExit()

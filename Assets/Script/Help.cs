@@ -24,7 +24,7 @@ public class Help : MonoBehaviour
         if (Input.GetKey("h"))
         {
             Debug.Log(help1.transform.position.y);
-            if (help1.transform.position.y > 3)
+            if (help1.transform.position.y > -1)
             {
               
                 help1.transform.position = Vector3.Lerp(help1.transform.position, target2, Time.deltaTime * speed);
@@ -33,7 +33,7 @@ public class Help : MonoBehaviour
 
         else
         {
-            if (help1.transform.position.y < 8)
+            if (help1.transform.position.y < 11)
             {
                 help1.transform.position = Vector3.Lerp(help1.transform.position, target1, Time.deltaTime * speed);
             }
