@@ -1,3 +1,4 @@
+using FoodSystem;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,113 +9,166 @@ public class Foodgeneration : MonoBehaviour
 	// Start is called before the first frame update
 	public TextMeshProUGUI dishnumber1;
 	public TextMeshProUGUI dishnumber2;
-	public TextMeshProUGUI dishnumber3;
 	public TextMeshProUGUI dishnumber4;
+    public TextMeshProUGUI dishnumber5;
 
-	int dish1;
-	int dish2;
-	int dish3;
-	int dish4;
+    public TextMeshProUGUI rounddown;
+    public TextMeshProUGUI rounddown2;
+    public static string finaldish = "";
+    public static string finaldish2 = "";
 
-	string [] foodlist = new string [6];
-	string [] foodlist2 = new string [4];
-	void Start()
+    int Maindish;
+    int Maindish2;
+
+	private static int counter1 = 0;
+	private static int counter2 = 0;
+
+    void Start()
     {
-		foodlist [0] = "Steak";
-		foodlist [1] = "Egg";
-		foodlist [2] = "Salad";
-		foodlist [3] = "Steak and egg";
-		foodlist [4] = "Steak and salad";
-		foodlist [5] = "Steak and egg and salad";
-
-
-		foodlist2 [0] = "Steak";
-		foodlist2 [1] = "Egg";
-		foodlist2 [2] = "Lettuce";
-		foodlist2 [3] = "";
-	}
+		buttondown();
+        buttondown2();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+		movestepdown();
+		if (GameStage.g) {
+			GameStage.g=false;
+		}
+		if (CalculateScore.complateCook)
+		{
+			CalculateScore.complateCook = false;
+        }
+	}
+
+
+	public void movestepdown() {
+		if (( Input.GetKeyDown(KeyCode.W) ) || ( Input.GetKeyDown(KeyCode.A) ) || ( Input.GetKeyDown(KeyCode.S) ) || ( Input.GetKeyDown(KeyCode.D) )) {
+			counter1--;
+			counter2--;
+			rounddown.text = counter1 + "";
+            rounddown2.text = counter2 + "";
+            buttondown();
+            buttondown2();
+
+        }
+	} 
+
+	public void buttondown() {
+		if (counter1 <= 0)
+		{
+			Maindish = Random.Range(0, 2);
+			int ChooseArray = Random.Range(1, 4);
+            counter1 = 15;
+            switch (ChooseArray)
+			{
+				case 1:
+					dishnumber1.text = FoodStack.grilledFood[Maindish] + "";
+					finaldish = FoodStack.grilledFood[Maindish];
+					if (Maindish == 0)
+					{
+						
+						dishnumber2.text = FoodStack.foodName[0];
+					}
+					else if (Maindish == 1)
+					{
+                        dishnumber2.text = FoodStack.foodName[1];
+					}
+					break;
+
+				case 2:
+					dishnumber1.text = FoodStack.panFood[Maindish] + "";
+					finaldish = FoodStack.panFood[Maindish];
+					if (Maindish == 0)
+					{
+                        dishnumber2.text = FoodStack.foodName[2];
+
+					}
+					else if (Maindish == 1)
+					{
+                        dishnumber2.text = FoodStack.foodName[3];
+					}
+					break;
+
+				case 3:
+					dishnumber1.text = FoodStack.cutFood[Maindish] + "";
+					finaldish = FoodStack.cutFood[Maindish];
+					if (Maindish == 0)
+					{
+                        dishnumber2.text = FoodStack.foodName[4];
+
+					}
+					else if (Maindish == 1)
+					{
+                        dishnumber2.text = FoodStack.foodName[5];
+					}
+					break;
+
+			}
+		}
+		
+        rounddown.text = "Hand Within Turns: " + counter1 + "";
+		
+
+    }
+    public void buttondown2()
+    {
+        if (counter2 <= 0)
+        {
+            counter2 = 10;
+            Maindish2 = Random.Range(0, 2);
+            int ChooseArray2 = Random.Range(1, 4);
+            switch (ChooseArray2)
+            {
+                case 1:
+                    dishnumber4.text = FoodStack.grilledFood[Maindish2] + "";
+                    finaldish2 = FoodStack.grilledFood[Maindish2];
+                    if (Maindish2 == 0)
+                    {
+                        
+                        dishnumber5.text = FoodStack.foodName[0];
+
+                    }
+                    else if (Maindish2 == 1)
+                    {
+                        dishnumber5.text = FoodStack.foodName[1];
+                    }
+                    break;
+
+                case 2:
+                    dishnumber4.text = FoodStack.panFood[Maindish2] + "";
+                    finaldish2 = FoodStack.panFood[Maindish2];
+                    if (Maindish2 == 0)
+                    {
+                        dishnumber5.text = FoodStack.foodName[2];
+                    }
+                    else if (Maindish2 == 1)
+                    {
+                        dishnumber5.text = FoodStack.foodName[3];
+                    }
+                    break;
+
+                case 3:
+                    dishnumber4.text = FoodStack.cutFood[Maindish2] + "";
+                    finaldish2 = FoodStack.cutFood[Maindish2];
+                    if (Maindish2 == 0)
+                    {
+                        dishnumber5.text = FoodStack.foodName[4];
+                    }
+                    else if (Maindish2 == 1)
+                    {
+                        dishnumber5.text = FoodStack.foodName[5];
+                    }
+                    break;
+            }
+        }
+        rounddown2.text = "Hand Within Turns: " + counter2 + "";
     }
 
-	public void buttonpre() {
-
-		dish1 = Random.Range(1,6);
-		dishnumber1.text = foodlist [dish1] + "";
-
-		if (dish1 == 0) {
-			dishnumber2.text = foodlist2 [0] + "";
-			dishnumber3.text = foodlist2 [3] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 1) {
-			dishnumber2.text = foodlist2 [1] + "";
-			dishnumber3.text = foodlist2 [3] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 2) {
-			dishnumber2.text = foodlist2 [2] + "";
-			dishnumber3.text = foodlist2 [3] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 3) {
-			dishnumber2.text = foodlist2 [0] + "";
-			dishnumber3.text = foodlist2 [1] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 4) {
-			dishnumber2.text = foodlist2 [0] + "";
-			dishnumber3.text = foodlist2 [2] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 5) {
-			//steak and egg and salad
-			dishnumber2.text = foodlist2 [0] + "";
-			dishnumber3.text = foodlist2 [1] + "";
-			dishnumber4.text = foodlist2 [2] + "";
-		}
-	}
 
 
-	public void dish1reroll() {
-		dish1 = Random.Range(1,6);
-		dishnumber1.text = foodlist [dish1] + "";
 
 
-		if (dish1 == 0) {
-			dishnumber2.text = foodlist2 [0] + "";
-			dishnumber3.text = foodlist2 [3] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 1) {
-			dishnumber2.text = foodlist2 [1] + "";
-			dishnumber3.text = foodlist2 [3] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 2) {
-			dishnumber2.text = foodlist2 [2] + "";
-			dishnumber3.text = foodlist2 [3] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 3) {
-			dishnumber2.text = foodlist2 [0] + "";
-			dishnumber3.text = foodlist2 [1] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 4) {
-			dishnumber2.text = foodlist2 [0] + "";
-			dishnumber3.text = foodlist2 [2] + "";
-			dishnumber4.text = foodlist2 [3] + "";
-		}
-		if (dish1 == 5) {
-			//steak and egg and salad
-			dishnumber2.text = foodlist2 [0] + "";
-			dishnumber3.text = foodlist2 [1] + "";
-			dishnumber4.text = foodlist2 [2] + "";
-		}
-	}
 
 }

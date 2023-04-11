@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 using FoodSystem;
 using player;
 using TMPro;
-using UnityEditor.VersionControl;
+//using UnityEditor.VersionControl;
 
 public class Fridge : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class Fridge : MonoBehaviour
     public int i;
     public bool playerOn;
     public TMP_Text info;
+    public TMP_Text infoF;
 
     void Start()
     {
@@ -33,11 +34,13 @@ public class Fridge : MonoBehaviour
     {
         //Debug.Log("enterThefridge");
         playerOn = true;
+        infoF.text = "Fridge: ";
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         //Debug.Log("ExitFridge");
         playerOn = false;
+        infoF.text = string.Empty;
     }
 
     private void OnMouseEnter()
@@ -67,8 +70,6 @@ public class Fridge : MonoBehaviour
                 }
                 Player.pocket = FoodStack.foodName[i];
             }
-            Debug.Log(i);
-            Debug.Log(Player.pocket);
         }
     }
 }

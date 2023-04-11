@@ -5,78 +5,84 @@ using FoodSystem;
 using player;
 using TMPro;
 
-public class Table : MonoBehaviour
+namespace tableScript
 {
-    // Update is called once per frame
-    public bool playerOn;
-    public Stack<string> tableCapacity = new Stack<string>();
-    public TMP_Text info;
-    public TMP_Text currentFood;
-    private void Start()
+    public class Table : MonoBehaviour
     {
-        playerOn = false;
-    }
-
-    void Update()
-    {
-        storeFood();
-    }
-
-   
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //Debug.Log("enterTable");
-        playerOn = true;
-        FoodStack.allControl = true;
-        if (tableCapacity.Count >= 1)
+        // Update is called once per frame
+        public bool playerOn;
+        public static Stack<string> tableCapacity = new Stack<string>();
+        public TMP_Text info;
+        public TMP_Text infoF;
+        public TMP_Text currentFood;
+        private void Start()
         {
-            if (FoodStack.allControl)
-            {
-                currentFood.text = tableCapacity.Peek();
-            }
+            playerOn = false;
         }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        //Debug.Log("ExitTable");
-        playerOn = false;
-        FoodStack.allControl = false;
-        if (!FoodStack.allControl)
-        {
-            currentFood.text = string.Empty;
-        }
-    }
-    private void OnMouseEnter()
-    {
-        info.text = "This is Table";
-    }
 
-    private void OnMouseExit()
-    {
-        info.text = string.Empty;
-    }
-    private void storeFood()
-    {
-        if (playerOn == true && Input.GetKeyDown(KeyCode.Space))
+        void Update()
         {
-            if (!Player.pocket.Equals(" "))
+            storeFood();
+        }
+
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            //Debug.Log("enterTable");
+            playerOn = true;
+            infoF.text = "Table: ";
+            FoodStack.allControl = true;
+            if (tableCapacity.Count >= 1)
             {
-                if (tableCapacity.Count < 2)
+                if (FoodStack.allControl)
                 {
-                    tableCapacity.Push(Player.pocket);
-                    Food.emptyPocket();
-                }
-                else
-                {
-                    Debug.Log("Table Full");
+                    currentFood.text = tableCapacity.Peek();
                 }
             }
-            else if (Player.pocket.Equals(" "))
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            //Debug.Log("ExitTable");
+            playerOn = false;
+            infoF.text = string.Empty;
+            FoodStack.allControl = false;
+            if (!FoodStack.allControl)
             {
-                if (tableCapacity.Count == 0) { Debug.Log("TableEmpty"); return; }
-                Player.pocket = tableCapacity.Pop();
+                currentFood.text = string.Empty;
             }
         }
-    }
+        private void OnMouseEnter()
+        {
+            info.text = "This is Table";
+        }
 
+        private void OnMouseExit()
+        {
+            info.text = string.Empty;
+        }
+        private void storeFood()
+        {
+            if (playerOn == true && Input.GetKeyDown(KeyCode.Space))
+            {
+                if (!Player.pocket.Equals(" "))
+                {
+                    if (tableCapacity.Count < 2)
+                    {
+                        tableCapacity.Push(Player.pocket);
+                        Food.emptyPocket();
+                    }
+                    else
+                    {
+                        Debug.Log("Table Full");
+                    }
+                }
+                else if (Player.pocket.Equals(" "))
+                {
+                    if (tableCapacity.Count == 0) { Debug.Log("TableEmpty"); return; }
+                    Player.pocket = tableCapacity.Pop();
+                }
+            }
+        }
+
+    }
 }

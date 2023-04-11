@@ -2,9 +2,10 @@ using Mono.Cecil;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using player;
+using tableScript;
 
 namespace FoodSystem
 {
@@ -21,6 +22,7 @@ namespace FoodSystem
         
         [SerializeField]
         private FoodStack _stack;
+        private FoodStack _stack2;
 
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
@@ -71,6 +73,10 @@ namespace FoodSystem
                 {
                     _spriteRenderer.sprite = _stack.foodStack[4];
                 }
+                else if (PlayerPocket.Equals(FoodStack.foodName[5]))
+                {
+                    _spriteRenderer.sprite = _stack.foodStack[5];
+                }
                 else if (PlayerPocket.Equals(FoodStack.grilledFood[0]))
                 {
                     _spriteRenderer.sprite = _stack.grilledFoodStack[0];
@@ -95,6 +101,7 @@ namespace FoodSystem
                 {
                     _spriteRenderer.sprite = _stack.cutFoodStack[1];
                 }
+
             }
         }
         private void SetupFoodSpriteToNull()
