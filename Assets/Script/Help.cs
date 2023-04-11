@@ -7,29 +7,38 @@ public class Help : MonoBehaviour
     public GameObject help1;
     public GameObject help2;
     public GameObject help3;
+    public Vector3 target1;
+    public Vector3 target2;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        help1.SetActive(false);
-        help2.SetActive(false);
-        help3.SetActive(false);
+        help1.SetActive(true);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("h"))
+
+        if (Input.GetKey("h"))
         {
-            //print("h key was pressed");
-            help1.SetActive(true);
-            help2.SetActive(true);
-            help3.SetActive(true);
+            Debug.Log(help1.transform.position.y);
+            if (help1.transform.position.y > 3)
+            {
+              
+                help1.transform.position = Vector3.Lerp(help1.transform.position, target2, Time.deltaTime * speed);
+            }
         }
-        else if(Input.GetKeyUp("h"))
+
+        else
         {
-            help1.SetActive(false);
-            help2.SetActive(false);
-            help3.SetActive(false);
+            if (help1.transform.position.y < 8)
+            {
+                help1.transform.position = Vector3.Lerp(help1.transform.position, target1, Time.deltaTime * speed);
+            }
         }
+
+        
     }
 }
