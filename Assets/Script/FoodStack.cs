@@ -7,7 +7,7 @@ namespace FoodSystem
 {
     public class FoodStack : MonoBehaviour
     {
-        public static string[] foodName = { "Potato", "Steak", "Egg", "Chicken Breast", "Cucumber", "Lettuce" };
+        public static string[] foodName = { "Potato Maggot", "Steak Bug", "Ball Monster", "Bird", "Cucumber Treeman", "Lettuce Hedgehog" };
         public static string[] grilledFood = { "Grilled Potato", "Grilled Steak" };
         public static string[] panFood = { "Fried Egg", "Cooked Chicken Breast" };
         public static string[] cutFood = { "Cucumber Slices", "Salad" };

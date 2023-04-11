@@ -108,7 +108,7 @@ public class Foodgeneration : MonoBehaviour
 			}
 		}
 		
-        rounddown.text = counter1 + "";
+        rounddown.text = "Hand Within Turns: " + counter1 + "";
 		
 
     }
@@ -163,7 +163,7 @@ public class Foodgeneration : MonoBehaviour
                     break;
             }
         }
-        rounddown2.text = counter2 + "";
+        rounddown2.text = "Hand Within Turns: " + counter2 + "";
     }
 
 

@@ -22,6 +22,7 @@ namespace FoodSystem
         
         [SerializeField]
         private FoodStack _stack;
+        private FoodStack _stack2;
 
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
@@ -100,6 +101,7 @@ namespace FoodSystem
                 {
                     _spriteRenderer.sprite = _stack.cutFoodStack[1];
                 }
+
             }
         }
         private void SetupFoodSpriteToNull()
