@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background
+    uniqueID: 3037746819
+    locked: 0
   - name: Facility
     uniqueID: 2615153871
     locked: 0
@@ -51,4 +54,7 @@ TagManager:
     locked: 0
   - name: Food
     uniqueID: 2777542031
+    locked: 0
+  - name: Help
+    uniqueID: 2222175109
     locked: 0

@@ -8,13 +8,14 @@ using TMPro;
 public class Grill : MonoBehaviour
 {
     public bool playerOn = false;
-    private static string currentCooking = " ";
+    public static string currentCooking = " ";
     private int workTime;
     private int CookatTurn;
     private int[] cookTime = new int[1];
     private bool finishGrill;
     public TMP_Text info;
     public TMP_Text currentFood;
+    public AudioSource finish;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,6 @@ public class Grill : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerOn = true;
-        //Debug.Log("EnterTheGrill");
         FoodStack.allControl = true;
         if (FoodStack.allControl)
         {
@@ -51,7 +51,7 @@ public class Grill : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        info.text = "This is Grilled";
+        info.text = "The Pink Planet";
     }
 
     private void OnMouseExit()
@@ -72,9 +72,9 @@ public class Grill : MonoBehaviour
                 finishGrill = false;
             }
 
-            if (Player.pocket.Equals(FoodStack.foodName[0]))
+            if (Player.pocket.Equals(FoodStack.foodName[0]) && finishGrill == false)
             {
-                workTime = 5;
+                workTime = 2;
                 CookatTurn = Player.turns + workTime;
                 cookTime[0] = CookatTurn;
                 Debug.Log(CookatTurn);
@@ -82,9 +82,9 @@ public class Grill : MonoBehaviour
                 Player.pocket = " ";
                 Food.emptyPocket();
             }
-            else if (Player.pocket.Equals(FoodStack.foodName[1]))
+            else if (Player.pocket.Equals(FoodStack.foodName[1]) && finishGrill == false)
             {
-                workTime = 10;
+                workTime = 3;
                 CookatTurn = Player.turns + workTime;
                 cookTime[0] = CookatTurn;
                 Debug.Log(CookatTurn);
@@ -112,6 +112,7 @@ public class Grill : MonoBehaviour
             currentCooking = FoodStack.grilledFood[0];
             finishGrill = true;
             cookTime[0] = 0;
+            finish.Play();
             Debug.Log(currentCooking);
         }
         else if (currentCooking.Equals(FoodStack.foodName[1]) && check)
@@ -119,6 +120,7 @@ public class Grill : MonoBehaviour
             currentCooking = FoodStack.grilledFood[1];
             finishGrill = true;
             cookTime[0] = 0;
+            finish.Play();
             Debug.Log(currentCooking);
         }
     }

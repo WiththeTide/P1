@@ -6,29 +6,33 @@ using UnityEngine;
 public class Drag2D : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int stage = 0;
     private Vector3 startPos;
     //public Transform[] tempPosArr = new Transform[9];
-    public Transform[] dragPos = new Transform[9];
+    public Transform[] dragPos = new Transform[8];
     public Transform[] dragPosSave = new Transform[6];
+    private Dictionary<int, Transform> dragList = new Dictionary<int, Transform>();
     public bool test = true;
+    public static int holdAll = 0;
+    public static bool holdAllCheck = false;
     private void Start()
     {
+        GameStage.drag = true;
         startPos = transform.position;
     }
     private void Update()
     {
         // Debug.Log(Input.mousePosition.x + ", " + Input.mousePosition.y + "," + Input.mousePosition.z);
+        checkPosition();
     }
 
     private void OnMouseDrag()
     {
-        if (stage == 0)
+        if (GameStage.drag)
         {
             transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, -2);
 
         }
-        else if (stage == 1)
+        else if (!GameStage.drag)
         {
             return;
         }
@@ -83,12 +87,6 @@ public class Drag2D : MonoBehaviour
             transform.position = dragPos[7].position;
 
         }
-        else if (Mathf.Abs(transform.position.x - dragPos[8].position.x) + Mathf.Abs(transform.position.y - dragPos[8].position.y) <= 1)
-        {
-            //Debug.Log("enter");
-            transform.position = dragPos[8].position;
-
-        }
         else
         {
             transform.position = startPos;
@@ -110,6 +108,64 @@ public class Drag2D : MonoBehaviour
           }*/
         posCompare();
 
+    }
+
+    void checkPosition()
+    {
+        for (int i = 0; i < dragPos.Length; i++)
+        {
+            if (dragPosSave[0].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(0))
+                {
+                    dragList.Add(0, dragPosSave[0]);
+                }
+            }
+            else if (dragPosSave[1].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(1))
+                {
+                    dragList.Add(1, dragPosSave[1]);
+                }
+            }
+            else if (dragPosSave[2].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(2))
+                {
+                    dragList.Add(2, dragPosSave[2]);
+                }
+            }
+            else if (dragPosSave[3].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(3))
+                {
+                    dragList.Add(3, dragPosSave[3]);
+                }
+            }
+            else if (dragPosSave[4].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(4))
+                {
+                    dragList.Add(4, dragPosSave[4]);
+                }
+            }
+            else if (dragPosSave[5].position.Equals(dragPos[i].position))
+            {
+                if (!dragList.ContainsKey(5))
+                {
+                    dragList.Add(5, dragPosSave[5]);
+                }
+            }
+        }
+
+        if (dragList.Count >= 6)
+        {
+            Drag2D.holdAllCheck = true;
+        }
+        else if (dragList.Count < 6)
+        {
+
+        }
     }
 
     void posCompare() 
@@ -149,4 +205,5 @@ public class Drag2D : MonoBehaviour
             
         }
     }
+
 }

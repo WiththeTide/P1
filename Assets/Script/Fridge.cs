@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 using FoodSystem;
 using player;
 using TMPro;
-using UnityEditor.VersionControl;
+//using UnityEditor.VersionControl;
 
 public class Fridge : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class Fridge : MonoBehaviour
     public int i;
     public bool playerOn;
     public TMP_Text info;
+    public AudioSource click;
 
     void Start()
     {
@@ -42,7 +43,7 @@ public class Fridge : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        info.text = "This is Fridge";
+        info.text = "The Blue Planet";
     }
 
     private void OnMouseExit() 
@@ -67,8 +68,7 @@ public class Fridge : MonoBehaviour
                 }
                 Player.pocket = FoodStack.foodName[i];
             }
-            Debug.Log(i);
-            Debug.Log(Player.pocket);
+            click.Play();
         }
     }
 }
